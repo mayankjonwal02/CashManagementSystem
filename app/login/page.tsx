@@ -29,7 +29,7 @@ export default function LoginPage() {
     try {
       await login(username, password, rememberMe)
       router.push("/dashboard")
-    } catch (err) {
+    } catch {
       setError("Invalid username or password. Please try again.")
     } finally {
       setIsLoading(false)

@@ -178,18 +178,18 @@ export function InsertEmployeeDataModal({ open, onOpenChange, onSuccess }: Inser
         onOpenChange(false)
         onSuccess()
       }, 1500)
-    } catch (error: any) {
+    } catch (error) {
       console.error("Error submitting data:", error)
-      setError(error.message || "Failed to submit data. Please try again.")
+      setError((error as Error).message || "Failed to submit data. Please try again.")
     } finally {
       setSubmitting(false)
     }
   }
 
-  const getEmployeeName = (id: string) => {
-    const employee = employees.find((emp) => emp._id === id)
-    return employee ? employee.name : ""
-  }
+  // const getEmployeeName = (id: string) => {
+  //   const employee = employees.find((emp) => emp._id === id)
+  //   return employee ? employee.name : ""
+  // }
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -303,7 +303,7 @@ export function InsertEmployeeDataModal({ open, onOpenChange, onSuccess }: Inser
               </Table>
             ) : (
               <div className="text-center py-8 text-gray-500">
-                No entries added. Click "Add Employee Entry" to begin.
+                No entries added. Click &quot;Add Employee Entry&quot; to begin.
               </div>
             )}
           </>
